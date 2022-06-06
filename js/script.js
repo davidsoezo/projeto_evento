@@ -20,7 +20,9 @@ const app = Vue.createApp({
             info:'',
             dolar:'',
             cotação:'',
-            data: ''
+            data: '',
+            statusTooltip:false // pra verificar se Tooltip ja foi ativado
+            
         }
     },
     methods:{
@@ -81,18 +83,32 @@ const app = Vue.createApp({
 
             }
 
-},verificarDiaSemana(){
+        },
+        verificarDiaSemana(){
     let dias = ["Segunda-feira","Terça-feira","Quarta-feria","Quinta-feira","Sexta-feira","Sábado","Domingo"]
     let diaSemana = new Date(this.data).getDay()// getDay () retorna o dia da semana sendo 0 para sengunda e 6 domingo
     if(this.data != ""){
         this.resultado = `essa data é $ {dias[diaSemana]}`
 
-    } else{
+    } else{ 
+        this.info= "Informe uma data válida"
+        this.resultado=""
 
     }
     this.resultado = dias[diaSemana]
     
-}
+        }, 
+        ativarTooltip() {
+            if(!this.statusTooltip){
+
+                const diaSemana = document.querySelector('#diaSemana')
+                const tooltip = new bootstrap.Tooltip(diaSemana)
+                this.statusTooltip = true
+
+
+            }
+            
+        }
     }
 })
 
