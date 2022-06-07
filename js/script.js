@@ -21,7 +21,9 @@ const app = Vue.createApp({
             dolar:'',
             cotação:'',
             data: '',
+            desconto:'',
             statusTooltip:false // pra verificar se Tooltip ja foi ativado
+            
             
         }
     },
@@ -36,6 +38,8 @@ const app = Vue.createApp({
                 if(itens == elementos){
                     this.bloco[elementos] = true
                     this.textoInicial = this.mensagem[elementos]
+                    this.resultado="" // resetando as informações
+                    this.info=''
                 }
                 else{
                     this.bloco[elementos] = false
